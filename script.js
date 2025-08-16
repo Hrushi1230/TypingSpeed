@@ -19,7 +19,7 @@ let words=[
 
 //initialize all elements
 let currentText ="";
-let currentIndex=0;
+let charIndex=0;
 let score =0;
 let timeLeft=30;
 let mistakes=0;
@@ -38,7 +38,41 @@ function loadPrompt(){
       promptElement.appendChild(span);
     });
 }
-loadPrompt();
+//create start game function 
+
+function startGame(){
+   if(isPlaying){
+    return;
+   }
+   isPlaying=true;
+   loadPrompt();
+   inputElement.innerText="";
+   inputElement.focus();
+   charIndex=0;
+   mistakes=0;
+   timeLeft=30;
+
+   //start countdown timer
+   timer =setInterval(() => {
+    if(timeLeft>0){
+      timeLeft--;
+      timeElement.innerText=timeLeft;
+    }
+    else{
+      endGame();
+    }
+   }, 1000);
+   
+}
+
+
+function endGame(){
+  clearInterval(timer);
+  isPlaying=false;
+  inputElement.disabled=true;
+}
+
+startGame();
 
 
 
