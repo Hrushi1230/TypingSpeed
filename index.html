@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypingSpeed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <h1>Typing Speed</h1>
+        <div class="top-row">
+            <div>Time : <span id="time">30</span></div>
+            <div>WPM : <span id="wpm">0</span></div>
+            <div>Accuracy : <span id="accuracy">0%</span></div>
+        </div>
+        <div id="prompt" class="prompt" aria-live="polite">
+            
+        </div>
+        <input id="input" class="input" placeholder="start typing here..." autocomplete="off" disabled>
+
+        <div class="controls">
+            <button id="start-btn">Start</button>
+            <button id="restart-btn" class="ghost" disabled>Restart</button>
+        </div>
+        <div class="result" id="result">
+            <h1>Results</h1>
+            <p>Time : <span id="r-time">0</span></p>
+            <p>WPM : <span id="r-wpm">0</span></p>
+            <p>Accuracy : <span id="r-accuracy">0%</span></p>
+            <p>Chars : <span id="r-chars">0</span></p>
+            <p>Errors : <span id="r-errors">0</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
