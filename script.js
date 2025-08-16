@@ -7,6 +7,8 @@ const scoreElement =document.getElementById('score');
 const startButton =document.getElementById('start-btn');
 const restartButton =document.getElementById('restart-btn');
 const resultElement=document.getElementById('result');
+const wpmElement =document.getElementById("wpm");
+const accuracyElement=document.getElementById("accuracy");
 
 //lets store sentences
 
@@ -89,13 +91,38 @@ function startGame(){
 
   });
 
+  //create updateStats function
+
+  function updateStats(){
+    timeElement.textContent=timeLeft;
+    const correctChars=charIndex-mistakes;
+    const wpm =Math.round(correctChars/5)/((60-timeLeft)/60)||0;
+    const accuracy=Math.round((correctChars/charIndex)*100)||0;
+    
+    wpmElement.textContent=wpm;
+    accuracyElement.textContent=accuracy;
+    
+  }
+
 function endGame(){
   clearInterval(timer);
   isPlaying=false;
   inputElement.disabled=true;
 }
 
-startGame();
+function restart(){
+  clearInterval(timer);
+  isPlaying=false;
+  charIndex=0;
+  mistakes=0;
+  inputElement.disabled=true;
+  inputElement.value="";
+  promptElement.innerHTML="";
+  timeLeft=30;
+  wpmElement.innerText="0";
+  timeElement.textContent=timeLeft;
+  accuracyElement.textContent="0"
+}
 
 
 
