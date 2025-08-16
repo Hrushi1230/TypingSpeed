@@ -22,7 +22,23 @@ let currentText ="";
 let currentIndex=0;
 let score =0;
 let timeLeft=30;
+let mistakes=0;
 let timer=null;
 let isPlaying=false;
+
+//create function to chose random prompt
+function loadPrompt(){
+    currentText=words[Math.floor(Math.random() * words.length)];
+
+    promptElement.innerHTML="";
+    //loop through each character in the text
+    currentText.split("").forEach( char => {
+      let span=document.createElement("span");
+      span.textContent=char;
+      promptElement.appendChild(span);
+    });
+}
+loadPrompt();
+
 
 
