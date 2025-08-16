@@ -89,13 +89,13 @@ button:disabled{
     padding: 2px 1px;
     border-radius: 4px;
 }
-.char.correct {
+.correct {
     color: #22c55e;
 }
-.char.wrong {
+.wrong {
     color: #ef4444;
     text-decoration: underline;
 }
-.char.current {
+.current {
     color: #1e293b;
 }
