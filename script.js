@@ -56,15 +56,38 @@ function startGame(){
    timer =setInterval(() => {
     if(timeLeft>0){
       timeLeft--;
-      timeElement.innerText=timeLeft;
     }
     else{
       endGame();
     }
-   }, 1000);
-   
+   }, 1000);   
 }
+//handle typing input 
+  inputElement.addEventListener("input", ()=>{
+    const characters=promptElement.querySelectorAll("span");
+    const typeChar=inputElement.value.split("")[charIndex];
 
+    if(typeChar == null){
+       if(charIndex >0 ){
+        charIndex--;
+        if(characters[charIndex].classList.contains("wrong")){
+          mistakes--;
+        }
+        characters[charIndex].classList.remove("correct","wrong");
+       }
+    }
+    else{
+      if(typeChar === currentText[charIndex]){
+        characters[charIndex].classList.add("correct");
+      }
+      else{
+        characters[charIndex].classList.add("wrong");
+        mistakes++;
+      }
+      charIndex++;
+    }
+
+  });
 
 function endGame(){
   clearInterval(timer);
